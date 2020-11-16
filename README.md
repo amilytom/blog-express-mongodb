@@ -18,10 +18,10 @@
 - async 异步处理方法库
 - mongoose 数据库支持
 - formidable 文件上传模块
-- sequelize MySQL 映射
-- dateformat 时间处理方法库
-- jsonwebtoken Token 生成及验证
-- art-template express-art-template 模板引擎
+- connect-multiparty 文件上传模块
+- ejs 模板引擎
+- ueditor 富文本编辑器
+- express-session session
 - nodemon node 运行自动化监控工具
 - ApiPost API 文档生成工具
 
