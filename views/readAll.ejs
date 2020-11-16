@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head><!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/blog.css">
+</head>
+<body>
+
+<div class="container-fluid " style="background-color: #48525e">
+    <header>
+        <nav class="navbar" role="navigation" style="margin-bottom: -20px;height: 50px;z-index: 1000">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle btn-sheng" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/blog/detail" style="color: white;">微博首页</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class=" navbar-collapse navbar-ex1-collapse hidden-xs">
+                <div class="btn-group pull-right " style="margin-top: 1px">
+                    <a class="btn btn-default btn-lg btn-menu-icon"><span class="glyphicon glyphicon-search"></span>
+                        <form action="" method="POST" role="form" class="blog_search btn-menu-hide wrak" >
+                            <div class="form-group">
+                                <label for="1"></label>
+                                <input type="text" class="form-control" name="" id="1" placeholder="Input..." style="width: 204px;margin-top: -18px;">
+                                <span class="glyphicon glyphicon-arrow-right" style="position: absolute;top: 38px;right: 9px;color: #999"></span>
+                            </div>
+                        </form>
+                    </a>
+                    <a class="btn btn-default btn-lg btn-menu-icon"><span class="glyphicon glyphicon-star"></span>
+                        <form action="" method="POST" role="form" class="blog_collect btn-menu-hide wrak" >
+                            <div class="form-group">
+                                <p>
+                                    <label for="2">标题</label>
+                                    <input type="text" class="form-control" name="" id="2" placeholder="Input..." style="">
+                                </p>
+                                <p>
+                                    <label for="3">网址</label>
+                                    <input type="text" class="form-control" name="" id="3" placeholder="Input..." style="">
+                                </p>
+                                <p>
+                                    <label for="4">标签</label>
+                                    <input type="text" class="form-control" name="" id="4" placeholder="Input..." style="">
+                                </p>
+                                <p>
+                                    <label for="5">备注</label>
+                                    <input type="text" class="form-control" name="" id="5" placeholder="Input..." style="">
+                                </p>
+                            </div>
+                        </form>
+                        </a>
+                        <a href="/blogEdits" class="btn btn-default btn-lg btn-menu-icon"><span class="glyphicon glyphicon-pencil"></span>
+
+                        </a>
+                    <% if(userSession){%>
+                    <button type="button" class="btnnod btn-default btn-lg btn-menu-icon"><img src=<%=imgUrl%> alt="" width="25" height="25" >
+                        <div class="user_edit btn-menu-hide wrak">
+                                <div class="user_edit_no" style="height:146px">
+                                    <div style="margin-top: 15px;position: relative">
+                                        <a style="position: absolute;top: 5px;left: 20px" data-toggle="modal" href="#modal_tx"><img src=<%=imgUrl%> alt="" width="100" height="100"></a>
+
+                                        <a href="/blog/user" style="position: absolute;top: 5px;right: 20px;"><%=userSession %></a>
+                                        <a class="destroySession" style="position: absolute;top: 55px;right: 0px;">注销账户</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </button>
+                    <% }else{%>
+                    <button type="button" class="btnnod btn-default btn-lg btn-menu-icon"><span class="glyphicon glyphicon-user"></span>
+                        <div class="user_edit btn-menu-hide wrak">
+                            <div class="user_edit_no">
+                                <a href="/blog/user/login">登录</a>
+                                <a href="/blog/user/reg">注册</a>
+                            </div>
+                        </div>
+                    </button>
+                    <%}%>
+
+                </div>
+
+
+            </div>
+
+            <div class="navbar-zdy collapse navbar-collapse navbar-ex1-collapse" id="navbar-zdy" style="background-color: white;padding-bottom: 20px">
+                <form action="" method="POST" role="form">
+                    <div class="form-group" style="position: relative">
+                        <label for=""></label>
+                        <input type="text" class="form-control" name="" id="" placeholder="搜索博客">
+                        <span class="glyphicon glyphicon-arrow-right" style="position: absolute;top: 29px;right: 9px;color: #999"></span>
+                    </div>
+
+                    <a href="/blog/user" class="btn btn-primary btn-lg btn-block">个人中心</a>
+                    <a href="" class="btn btn-primary btn-lg btn-block">发表博客</a>
+                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                </form>
+            </div>
+        </nav>
+    </header>
+</div>
+
+<!--模态框-->
+<div class="modal fade" id="modal_tx">
+    <div class="modal-dialog">
+        <form action="/blog/detail" enctype ="multipart/form-data" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">上传头像</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="file" name="pic">
+                    <input type="text" style="display: none" name="sRole" value="4">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" >Submit</button>
+                </div>
+            </div>
+        </form><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="banner img-responsive">
+    <div class="blog_title">
+        <h2><a href="/blog/user" style="color: black;font-weight: bolder"><%=username%></a></h2>
+        <h3>hello world</h3>
+    </div>
+</div>
+
+
+
+<div class="container-fluid" style="width: 64%">
+    <div class="ArticleContent">
+        <div class="left col-md-3">
+            <h3>个人资料</h3>
+            <img src=<%=imgUrl2%> alt="">
+            <h4 style="text-align: center"><%=contents[0]['name']%></h4>
+            <hr>
+            <h4>访问:&nbsp;&nbsp;&nbsp;&nbsp;<%=contents[0]['click']%>次</h4>
+            <hr>
+            <%  for(var i=0;i<cats.length;i++){
+            %>
+            <h4><%=cats[i]['catname']%>:<span class="catNum"><%=catsNum[0][cats[i]['catname']]%>篇</span></h4>
+            <%
+            }
+            %>
+
+        </div>
+        <div class="right col-md-8 pull-right">
+            <h2><span><%=contents[0]['title']%></span><small>(<span><%=contents[0]['cat']%></span>)</small></h2>
+            <div class="time_edit">
+                <span class="time"><%=contents[0]['time']%>&nbsp;&nbsp;<%=contents[0]['click']%>次访问</span>
+                <span class="edit">
+                    <a href="">评论</a>
+                    <a href="javascript:void(0)" class="collect" >收藏</a>
+                    <%
+                      if(userSession==username){
+                    %>
+                    <a href="javascript:void(0)" class="edit">编辑</a>
+                    <a href="javascript:void(0)" class="remove">删除</a>
+                    <%
+                    }
+                    %>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <hr>
+            <div class="article">
+                <%-contents[0]['content']%>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/blog.js"></script>
+
+
+</body>
+</html>
+<body>
+
+</body>
+</html>

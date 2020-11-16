@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <title>账号登录</title>
+    <link
+      rel="stylesheet"
+      href="/plugins/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/blog.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="login_form">
+        <!--<form action="" method="POST" role="form">-->
+        <!--<div class="col-md-3"><input type="text" class="form-control " name="" id="" placeholder="请输入用户名"></div>-->
+        <!--<div class="col-md-3"> <input type="password" class="form-control" name="" placeholder="输入密码"></div>-->
+        <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+        <!--</form>-->
+        <form action="/blog/detail" method="POST" role="form">
+          <legend>账号登录</legend>
+          <div class="form-group">
+            <p>
+              <input
+                type="text"
+                class="form-control"
+                name="user"
+                placeholder="请输入用户名"
+                required
+              />
+            </p>
+            <p>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                placeholder="输入密码"
+                required
+              />
+            </p>
+            <p>
+              <input type="checkbox" name="name" /><span style="color: #999"
+                >下次自动登录</span
+              >
+            </p>
+            <input type="text" name="sRole" value="3" style="display: none" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <p>没有账号？立即<a href="/reg">注册一个</a></p>
+      </div>
+    </div>
+
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/javascripts/blog.js"></script>
+    <script></script>
+  </body>
+</html>

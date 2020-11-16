@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title><%= title %></title>
+<link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/stylesheets/blog.css">
+</head>
+
+<body>
+  <div class="container-fluid " style="background-color: #48525e">
+     <header>
+       <nav class="navbar" role="navigation" style="margin-bottom: -20px;height: 50px;z-index: 1000">
+       	<!-- Brand and toggle get grouped for better mobile display -->
+       	<div class="navbar-header">
+       		<button type="button" class="navbar-toggle btn-sheng" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+       			<span class="sr-only">Toggle navigation</span>
+       			<span class="icon-bar"></span>
+       			<span class="icon-bar"></span>
+       			<span class="icon-bar"></span>
+       		</button>
+       		<a class="navbar-brand" href="#" style="color: white;">微博首页</a>
+       	</div>
+
+       	<!-- Collect the nav links, forms, and other content for toggling -->
+       	<div class=" navbar-collapse navbar-ex1-collapse hidden-xs">
+            <div class="btn-group pull-right " style="margin-top: 1px">
+                <a  class="btn btn-default btn-lg btn-menu-icon"><span class="glyphicon glyphicon-search"></span>
+                    <form action="" method="POST" role="form" class="blog_search btn-menu-hide wrak" >
+                    	<div class="form-group">
+                    		<label for="1"></label>
+                    		<input type="text" class="form-control" name="" id="1" placeholder="Input..." style="width: 204px;margin-top: -18px;">
+                            <span class="glyphicon glyphicon-arrow-right" style="position: absolute;top: 38px;right: 9px;color: #999"></span>
+                    	</div>
+                    </form>
+                </a>
+                <a href="blog/user/login" class="btn btn-default btn-lg btn-menu-icon"><span class="glyphicon glyphicon-pencil"></span>
+
+                </a>
+
+                <% if(userSession){%>
+                <button type="button" class="btnnod btn-default btn-lg btn-menu-icon"><img src=<%=imgUrl%> alt="" width="25" height="25" >
+                    <div class="user_edit btn-menu-hide wrak">
+                        <div class="user_edit_no" style="height:146px">
+                            <div style="margin-top: 15px;position: relative">
+                                <a style="position: absolute;top: 5px;left: 20px" data-toggle="modal" href="#modal_tx"><img src=<%=imgUrl%> alt="" width="100" height="100"></a>
+
+                                <a href="/blog/user" style="position: absolute;top: 5px;right: 20px;"><%=userSession %></a>
+                                <a class="destroySession" style="position: absolute;top: 55px;right: 0px;">注销账户</a>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+                <%}else{%>
+                <button type="button" class="btnnod btn-default btn-lg btn-menu-icon"><span class="glyphicon glyphicon-user"></span>
+                    <div class="user_edit btn-menu-hide wrak">
+                        <div class="user_edit_no">
+                            <a href="/blog/user/login">登录</a>
+                            <a href="/blog/user/reg">注册</a>
+                        </div>
+                    </div>
+                </button>
+                <%}%>
+            </div>
+
+
+       	</div>
+
+       <div class="navbar-zdy collapse navbar-collapse navbar-ex1-collapse" id="navbar-zdy" style="background-color: white;padding-bottom: 20px">
+           <div role="form">
+                <div class="form-group" style="position: relative">
+                    <label for=""></label>
+                    <input type="text" class="form-control" name="" id="" placeholder="搜索博客">
+                    <span class="glyphicon glyphicon-arrow-right" style="position: absolute;top: 29px;right: 9px;color: #999"></span>
+                </div>
+               <a href="/blog/user/login" class="btn btn-primary btn-lg btn-block">登录</a>
+               <a href="/blog/user/login" class="btn btn-primary btn-lg btn-block">发表博客</a>
+            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+           </div>
+       </div>
+       </nav>
+     </header>
+  </div>
+  <div class="banner img-responsive">
+    <div class="blog_title">
+        <h2><a href="" style="color: black;font-weight: bolder">学而时习之</a></h2>
+        <h3>hello world</h3>
+    </div>
+  </div>
+<div class="container-fluid" style="width: 94%">
+  <div class="content">
+      <div class="">
+          <div class="c_left col-md-9 col-sm-8 col-xs-12" style="height: 400px">
+                 <article >
+                     <h2 class="title_ct">
+                         <p style="background: white;width: 145px">文章<span style="color: #ff8986;">推荐</span></p>
+                     </h2>
+                     <%
+                       for(var i=contentsAll.length-1;i>=0;i--){
+                     %>
+
+
+                     <div class="list_ct">
+                         <h3><%=contentsAll[i]['title']%></h3>
+                         <hr>
+                         <div class="">
+                             <div class="col-md-3 blog_item_img"><img src=<%=contentsAll[i]['titlePic']%> alt="" class="img-responsive"></div>
+                             <div class="col-md-9 blog_item_con">
+                                 <p><%=contentsAll[i]['text']%></p>
+                             </div>
+                         </div>
+                         <!-- Usage as a class -->
+                         <div class="clearfix"></div>
+
+                     <div class="dateView">
+                         <a href="javascript:void(0)" class="readAll" style="float: right">阅读全文>></a>
+                         <small><span class="glyphicon glyphicon-time"></span><%=contentsAll[i]['time']%></small>
+                         <small>作者:<span class="name"><%=contentsAll[i]['name']%></span></small>
+                         <small>个人博客：[<a href=""><%=contentsAll[i]['cat']%></a>]</small>
+                     </div>
+
+                     </div>
+                     <%}%>
+
+
+                 </article>
+          </div>
+          <div class="c_right col-md-3 col-sm-4 hidden-xs">
+              <aside >
+                  <div class="newestArticle">
+                      <h4 class="title_nt">
+                          <p style="background: white;width: 145px">最新<span style="color: #37ccca;">文章</span></p>
+                      </h4>
+                      <ul class="item_nt">
+                          <%
+                          var count=0;
+                          for(var i=contentsAll.length-1;i>=0;i--){
+                          count++;
+                          if(count>5){    //最新文章的显示个数为5
+                          break;
+                          }
+                          var src="/blog/detail/Article?name="+contentsAll[i]['name']+"&&title="+contentsAll[i]['title']
+                          %>
+                          <li><a class="tit" href=<%=src%>><%=contentsAll[i]['title']%></a><span class="name" style="display: none"><%=contentsAll[i]['name']%></span></li>
+                          <%
+                          }
+                          %>
+                      </ul>
+                  </div>
+                  <div class="clickRand">
+                      <h4 class="title_nt">
+                          <p style="background: white;width: 145px">点击<span style="color: red;">排行</span></p>
+                      </h4>
+                      <ul class="item_nt" style="padding: 0 23px">
+                          <!--<li><span class="badge b_no1">1</span>点击量排行博客内容</li>-->
+                          <!--<li><span class="badge">2</span>点击量排行博客内容</li>-->
+                          <!--<li><span class="badge">3</span>点击量排行博客内容</li>-->
+                          <!--<li><span class="badge">4</span>点击量排行博客内容</li>-->
+                          <!--<li><span class="badge">5</span>点击量排行博客内容</li>-->
+                          <%
+                          for(var i=0;i<contentsByClick.length;i++){
+                          var src="/blog/detail/Article?name="+contentsByClick[i]['name']+"&&title="+contentsByClick[i]['title']
+                          %>
+                          <% if(i==0) {%>
+                          <li><span class="badge b_no1">1</span><a class="tit" href=<%=src%>><%=contentsByClick[i]['title']%></a><span class="name" style="display: none"><%=contentsByClick[i]['name']%></span></li>
+                          <% continue;}%>
+                          <li><span class="badge"><%=i+1 %></span><a class="tit" href=<%=src%>><%=contentsByClick[i]['title']%></a><span class="name" style="display: none"><%=contentsByClick[i]['name']%></span></li>
+                          <%
+                          }
+                          %>
+                      </ul>
+                  </div>
+                  <div class="linkMe">
+                      <h4 class="title_nt">
+                          <p style="background: white;width: 145px">友情<span style="color: red;">链接</span></p>
+                      </h4>
+                      <a href="/">
+                          <img src="/images/ewm.jpg" alt="" width="250px">
+                      </a>
+                  </div>
+              </aside>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/blog.js"></script>
+</body>
+
+</html>

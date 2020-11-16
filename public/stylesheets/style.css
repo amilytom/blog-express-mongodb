@@ -1,0 +1,120 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+.blog {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.bg {
+  background-image: url(../images/bg.jpg);
+  background-color: #348cb2;
+  /*background-position: bottom left;*/
+  background-repeat: repeat-x;
+  background-size: 1200px auto;
+  width: 3600px;
+  height: 100%;
+  animation: animatedBackground 100s linear infinite;
+}
+.cover {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  animation: bgColor 3s ease-in forwards;
+}
+.main {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+.main .header {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  /* top: -1em; */
+  vertical-align: middle;
+  width: 90%;
+  top: 0;
+  margin-top: 60px;
+  opacity: 0;
+  animation: mainColor 2s linear forwards, animatedTop 1s linear forwards;
+  animation-delay: 2s;
+}
+.main .header h1 {
+  font-family: Microsoft YaHei, Source Sans Pro, sans-serif;
+  font-size: 106px;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1em;
+  color: white;
+}
+.main .header p {
+  color: white;
+  font-size: 22px;
+}
+.main .header nav {
+  display: block;
+  clear: both;
+  margin-top: 80px;
+}
+li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 1%;
+  border-radius: 50%;
+  border: 1px solid white;
+  width: 90px;
+  height: 90px;
+}
+li img {
+  margin-top: 12px;
+}
+li:hover {
+  transform: scale(1.2);
+}
+@keyframes animatedBackground {
+  from {
+    background-position: bottom right;
+  }
+  to {
+    background-position: bottom left;
+  }
+}
+@keyframes bgColor {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes mainColor {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animatedTop {
+  0% {
+    top: 13%;
+  }
+  100% {
+    top: 11%;
+  }
+}

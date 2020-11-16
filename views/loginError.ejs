@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h1>账号或者密码输入错误，请于<span>5</span>秒后<a>重新登录</a></h1>
+
+    <script>
+      var i = 5,
+        sec = document.getElementsByTagName("span")[0],
+        a = document.getElementsByTagName("a")[0];
+      var t = setInterval(function () {
+        i--;
+        sec.innerHTML = i;
+        if (i == 0) {
+          clearInterval(t);
+          a.setAttribute("href", "/blog/user/login");
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
