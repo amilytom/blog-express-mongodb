@@ -27,7 +27,9 @@
 
 ## 项目运行
 
-下载项目文件夹后，先安装依赖
+下载项目文件夹后，先安装 node.js 和 MongoDB，创建所需的数据库 myblog 以及 admin 用户
+
+之后安装依赖
 
 ```
 npm install
